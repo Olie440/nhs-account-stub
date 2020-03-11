@@ -10,12 +10,14 @@ const FlowTypes = {
 // Port to run the stub on
 const PORT = 4000;
 // Flow to use
-const FLOW_TYPE = FlowTypes.auto;
+const FLOW_TYPE = FlowTypes.manual;
 // Where to redirect to after login is successful
 const SUCCESS_REDIRECT_URL = "http://localhost:4200/#/patient-online/gp-connect";
 // This shouldn't need to change as it expires in 2030, it can be edited using https://jwt.io/
 const ID_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZjhhZjExZC04OTgwLTRhNWUtOGNjYy1iYTc1Yjc3NzEwYmUiLCJhY2NvdW50X2lkIjoiZGY4YWYxMWQtODk4MC00YTVlLThjY2MtYmE3NWI3NzcxMGJlIiwiY3VzdG9tOmFjY291bnRfaWQiOiJkZjhhZjExZC04OTgwLTRhNWUtOGNjYy1iYTc1Yjc3NzEwYmUiLCJpc3MiOiJodHRwczovL2F1dGguZGV2LnNpZ25pbi5uaHMudWsiLCJpYXQiOjE1ODM5MjA2MTksImV4cCI6MTg5MzQ1NjAwMCwiYXVkIjoiaHR0cHM6Ly9hdXRoLmRldi5zaWduaW4ubmhzLnVrIiwianRpIjoiMDM0ZjQ1M2ItOTZhOS00OThiLWI2ZTEtYzA4MGVkMGI4ZmRhIiwiYXV0aGVudGljYXRpb25fdmVjdG9yIjoiQ3AuQ2QiLCJyZW1lbWJlcl9teV9kZXZpY2UiOmZhbHNlLCJ1c2VyX2FnZW50IjoiQW1hem9uIENsb3VkRnJvbnQifQ.H_mqSUYEKHcGk62HgJ2mDKls9s9CKXUnAHrw9jlb4_U";
 
+
+app.use(cors({ credentials: true, origin: true }));
 app.post("/authenticate/password", (_, res) => {
   res.send({
     session_id: "b9f52f7b-16a3-4360-b29b-19ebf258107e",
@@ -121,5 +123,4 @@ app.post("/account-logger/logs", (_, res) => {
   res.end();
 });
 
-app.use(cors({ credentials: true, origin: true }));
 app.listen(PORT, () => console.log("Stub Started on port", PORT));
