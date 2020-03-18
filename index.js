@@ -10,7 +10,7 @@ const FlowTypes = {
 // Port to run the stub on
 const PORT = 4000;
 // Flow to use
-const FLOW_TYPE = FlowTypes.manual;
+const FLOW_TYPE = FlowTypes.auto;
 // Where to redirect to after login is successful
 const SUCCESS_REDIRECT_URL = "http://localhost:4200/#/patient-online/gp-connect";
 // This shouldn't need to change as it expires in 2030, it can be edited using https://jwt.io/
@@ -94,7 +94,7 @@ app.get("/client-info", (_, res) => {
   res.end();
 });
 
-app.get("/pyi/upload/url/:any/photo", (_, res) => {
+app.get("/pyi/upload/url/:any/:photoType", (_, res) => {
   res.send({
     signed_url: `http://localhost:${PORT}/unsubmitted/1`,
     validation_id: "1"
@@ -114,6 +114,13 @@ app.get("/pyi/upload/validation/:object_key", (_, res) => {
     validationRejectReason: "",
     preflightCheckStatus: "fail",
     preflightCheckRejectReason: "document_blurred"
+  });
+  res.end();
+});
+
+app.put("/pyi/verification/:any/document/submission", (_, res) => {
+  res.send({
+    error: null
   });
   res.end();
 });
