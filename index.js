@@ -3,14 +3,31 @@ const cors = require("cors");
 const app = express();
 
 const FlowTypes = {
-  auto: "Auto1",
-  manual: "Manual"
+  AUTO: "Auto1",
+  MANUAL: "Manual"
 };
+
+const PreFlightResults = {
+  SUCCESS: {
+    preflightCheckStatus: "success",
+    preflightCheckRejectReason: ""
+  },
+  BLURRED: { 
+    preflightCheckStatus: "fail",
+    preflightCheckRejectReason: "document_blurred"
+  },
+  NO_DOCUMENT: {
+    preflightCheckStatus: "fail",
+    preflightCheckRejectReason: "no_document_found"
+  }
+}
 
 // Port to run the stub on
 const PORT = 4000;
 // Flow to use
-const FLOW_TYPE = FlowTypes.auto;
+const FLOW_TYPE = FlowTypes.AUTO;
+// Preflight flow to use
+const PREFLIGHT_CHECK_RESULT = PreFlightResults.BLURRED;
 // Where to redirect to after login is successful
 const SUCCESS_REDIRECT_URL = "http://localhost:4200/#/patient-online/gp-connect";
 // This shouldn't need to change as it expires in 2030, it can be edited using https://jwt.io/
@@ -112,8 +129,7 @@ app.get("/pyi/upload/validation/:object_key", (_, res) => {
     validationStatus: "success",
     validationMessage: "",
     validationRejectReason: "",
-    preflightCheckStatus: "fail",
-    preflightCheckRejectReason: "document_blurred"
+    ...PREFLIGHT_CHECK_RESULT
   });
   res.end();
 });
