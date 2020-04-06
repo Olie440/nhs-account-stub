@@ -2,66 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-const FlowTypes = {
-  AUTO: "Auto1",
-  MANUAL: "Manual"
-};
-
-const PreFlightResults = {
-  SUCCESS: {
-    preflightCheckStatus: "success",
-    preflightCheckRejectReason: ""
-  },
-  BLURRED: { 
-    preflightCheckStatus: "fail",
-    preflightCheckRejectReason: "document_blurred"
-  },
-  NO_DOCUMENT: {
-    preflightCheckStatus: "fail",
-    preflightCheckRejectReason: "no_document_found"
-  }
-}
-
-// Port to run the stub on
-const PORT = 4000;
-// Flow to use
-const FLOW_TYPE = FlowTypes.AUTO;
-// Preflight flow to use
-const PREFLIGHT_CHECK_RESULT = PreFlightResults.BLURRED;
-// Where to redirect to after login is successful
-const SUCCESS_REDIRECT_URL = "http://localhost:4200/#/patient-online/gp-connect";
-// This shouldn't need to change as it expires in 2030, it can be edited using https://jwt.io/
-const ID_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZjhhZjExZC04OTgwLTRhNWUtOGNjYy1iYTc1Yjc3NzEwYmUiLCJhY2NvdW50X2lkIjoiZGY4YWYxMWQtODk4MC00YTVlLThjY2MtYmE3NWI3NzcxMGJlIiwiY3VzdG9tOmFjY291bnRfaWQiOiJkZjhhZjExZC04OTgwLTRhNWUtOGNjYy1iYTc1Yjc3NzEwYmUiLCJpc3MiOiJodHRwczovL2F1dGguZGV2LnNpZ25pbi5uaHMudWsiLCJpYXQiOjE1ODM5MjA2MTksImV4cCI6MTg5MzQ1NjAwMCwiYXVkIjoiaHR0cHM6Ly9hdXRoLmRldi5zaWduaW4ubmhzLnVrIiwianRpIjoiMDM0ZjQ1M2ItOTZhOS00OThiLWI2ZTEtYzA4MGVkMGI4ZmRhIiwiYXV0aGVudGljYXRpb25fdmVjdG9yIjoiQ3AuQ2QiLCJyZW1lbWJlcl9teV9kZXZpY2UiOmZhbHNlLCJ1c2VyX2FnZW50IjoiQW1hem9uIENsb3VkRnJvbnQifQ.H_mqSUYEKHcGk62HgJ2mDKls9s9CKXUnAHrw9jlb4_U";
-
+const config = require('./config');
+const addSpaLoginRoutes = require('./lib/spa-login');
+const addModuleAccountRoutes = require('./lib/module-account');
 
 app.use(cors({ credentials: true, origin: true }));
-app.post("/authenticate/password", (_, res) => {
-  res.send({
-    session_id: "b9f52f7b-16a3-4360-b29b-19ebf258107e",
-    authentication_state: "UNREGISTERED"
-  });
-  res.end();
-});
 
-app.post("/account/mobile", (_, res) => {
-  res.status(200);
-  res.end();
-});
-
-app.post("/authenticate/otp", (_, res) => {
-  res.send({
-    id_token: ID_TOKEN
-  });
-  res.end();
-});
-
-app.post("/authcode", (_, res) => {
-  res.send({
-    Location: SUCCESS_REDIRECT_URL,
-    id_token: ID_TOKEN
-  });
-  res.end();
-});
+addSpaLoginRoutes(app);
+addModuleAccountRoutes(app);
 
 app.get("/pyi/pol/:any/status", (_, res) => {
   res.send({
@@ -72,7 +20,7 @@ app.get("/pyi/pol/:any/status", (_, res) => {
 
 app.post("/pyi/initialisation/:any", (_, res) => {
   res.send({
-    flowType: FLOW_TYPE,
+    flowType: config.FLOW_TYPE,
     initialisationOutcome: "StartPyi"
   });
   res.end();
@@ -113,7 +61,7 @@ app.get("/client-info", (_, res) => {
 
 app.get("/pyi/upload/url/:any/:photoType", (_, res) => {
   res.send({
-    signed_url: `http://localhost:${PORT}/unsubmitted/1`,
+    signed_url: `http://localhost:${config.PORT}/unsubmitted/1`,
     validation_id: "1"
   });
   res.end();
@@ -129,7 +77,7 @@ app.get("/pyi/upload/validation/:object_key", (_, res) => {
     validationStatus: "success",
     validationMessage: "",
     validationRejectReason: "",
-    ...PREFLIGHT_CHECK_RESULT
+    ...config.PREFLIGHT_CHECK_RESULT
   });
   res.end();
 });
@@ -146,4 +94,4 @@ app.post("/account-logger/logs", (_, res) => {
   res.end();
 });
 
-app.listen(PORT, () => console.log("Stub Started on port", PORT));
+app.listen(config.PORT, () => console.log("Stub Started on port", config.PORT));
