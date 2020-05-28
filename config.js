@@ -31,6 +31,10 @@ const PreFlightResults = {
     preflightCheckStatus: 'fail',
     preflightCheckRejectReason: 'no_document_found',
   },
+  PENDING: {
+    preflightCheckStatus: '',
+    preflightCheckRejectReason: ''
+  }
 };
 
 const SubmissionResults = {
@@ -68,6 +72,8 @@ module.exports = {
   PYI_FLOW_TYPE: FlowTypes.AUTO,
   // Photo validation result to use
   PYI_VALIDATION_RESULT: ValidationResults.SUCCESS,
+  // Preflight checks enabled
+  PYI_PREFLIGHT_CHECK_ENABLED: true,
   // Preflight flow to use
   PYI_PREFLIGHT_CHECK_RESULT: PreFlightResults.BLURRED,
   // Result of photo submission
