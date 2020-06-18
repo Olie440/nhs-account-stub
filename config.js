@@ -37,6 +37,12 @@ const PreFlightResults = {
   }
 };
 
+const PreFlightEnabledStatuses = {
+  ON: 'on',
+  PROCESS_ONLY: 'process-only',
+  OFF: 'off'
+}
+
 const SubmissionResults = {
   GO_TO_AUTO: 'StartFaceScan',
   GO_TO_MANUAL: 'ReferredToManual',
@@ -73,7 +79,7 @@ module.exports = {
   // Photo validation result to use
   PYI_VALIDATION_RESULT: ValidationResults.SUCCESS,
   // Preflight checks enabled
-  PYI_PREFLIGHT_CHECK_ENABLED: true,
+  PYI_PREFLIGHT_CHECK_ENABLED: PreFlightEnabledStatuses.ON,
   // Preflight flow to use
   PYI_PREFLIGHT_CHECK_RESULT: PreFlightResults.BLURRED,
   // Result of photo submission
