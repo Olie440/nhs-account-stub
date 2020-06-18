@@ -1,61 +1,11 @@
-const FlowTypes = {
-  AUTO: 'Auto1',
-  MANUAL: 'Manual',
-};
-
-const ValidationResults = {
-  SUCCESS: {
-    validationStatus: 'success',
-    validationRejectReason: '',
-  },
-  INVALID: {
-    validationStatus: 'fail',
-    validationRejectReason: 'file_validation',
-  },
-  DAMAGED: {
-    validationStatus: 'fail',
-    validationRejectReason: 'file_damaged',
-  },
-};
-
-const PreFlightResults = {
-  SUCCESS: {
-    preflightCheckStatus: 'success',
-    preflightCheckRejectReason: '',
-  },
-  BLURRED: {
-    preflightCheckStatus: 'fail',
-    preflightCheckRejectReason: 'document_blurred',
-  },
-  NO_DOCUMENT: {
-    preflightCheckStatus: 'fail',
-    preflightCheckRejectReason: 'no_document_found',
-  },
-  PENDING: {
-    preflightCheckStatus: '',
-    preflightCheckRejectReason: ''
-  }
-};
-
-const PreFlightEnabledStatuses = {
-  ON: 'on',
-  PROCESS_ONLY: 'process-only',
-  OFF: 'off'
-}
-
-const SubmissionResults = {
-  GO_TO_AUTO: 'StartFaceScan',
-  GO_TO_MANUAL: 'ReferredToManual',
-  FAIL: null,
-};
-
-const P5UpliftResponses = {
-  SUCCESS: { status: 200, body: { message: 'Uplift Successful' } },
-  NO_MATCH: { status: 404, body: { error: 'No match found' } },
-  NOT_VERIFIED: { status: 404, body: { error: 'NHS number not verified' } },
-  MULTIPLE: { status: 404, body: { error: 'Multiple matches found' } },
-  OTHER: { status: 503, body: { error: 'Internal server error' } },
-};
+const { 
+  FlowTypes,
+  ValidationResults,
+  PreFlightResults,
+  PreFlightEnabledStatuses,
+  SubmissionResults,
+  P5UpliftResponses
+} = require('./consts.js');
 
 const OIDC_PARAMS = {
   scope: 'openid profile nhs_app_credentials gp_integration_credentials phone email profile_extended',
