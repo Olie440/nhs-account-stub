@@ -1,5 +1,6 @@
 const { 
-  FlowTypes,
+  LoginFlowTypes,
+  PYIFlowTypes,
   ValidationResults,
   PreFlightResults,
   PreFlightEnabledStatuses,
@@ -24,8 +25,10 @@ module.exports = {
   PORT: 4000,
   // Address of the local front-end
   FRONT_END_URL: 'http://localhost:4200/',
-  // Flow to use
-  PYI_FLOW_TYPE: FlowTypes.AUTO,
+  // Login Flow to use
+  LOGIN_FLOW: LoginFlowTypes.VALID_LOGIN,
+  // PYI Flow to use
+  PYI_FLOW_TYPE: PYIFlowTypes.AUTO,
   // Photo validation result to use
   PYI_VALIDATION_RESULT: ValidationResults.SUCCESS,
   // Preflight checks enabled

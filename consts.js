@@ -1,5 +1,10 @@
 module.exports = {
-  FlowTypes: {
+  LoginFlowTypes: {
+    REGISTER: Symbol(),
+    VALID_LOGIN: Symbol()
+  },
+
+  PYIFlowTypes: {
     AUTO: 'Auto1',
     MANUAL: 'Manual',
   },
