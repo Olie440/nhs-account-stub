@@ -1,11 +1,14 @@
-const { 
+const {
+  ID_TOKEN,
   LoginFlowTypes,
   PYIFlowTypes,
   ValidationResults,
   PreFlightResults,
   PreFlightEnabledStatuses,
   SubmissionResults,
-  P5UpliftResponses
+  P5UpliftResponses,
+  OTPResponses,
+  SuccessRoutes
 } = require('./consts.js');
 
 const OIDC_PARAMS = {
@@ -26,7 +29,9 @@ module.exports = {
   // Address of the local front-end
   FRONT_END_URL: 'http://localhost:4200/',
   // Login Flow to use
-  LOGIN_FLOW: LoginFlowTypes.VALID_LOGIN,
+  LOGIN_FLOW: LoginFlowTypes.REGISTER,
+  // Global OTP check response
+  OTP_RESPONSE: OTPResponses.SUCCESS,
   // PYI Flow to use
   PYI_FLOW_TYPE: PYIFlowTypes.AUTO,
   // Photo validation result to use
@@ -40,9 +45,9 @@ module.exports = {
   // P5 flow to use
   P5_UPLIFT_RESPONSE: P5UpliftResponses.NO_MATCH,
   // Where to redirect to after login is successful
-  SUCCESS_REDIRECT_ROUTE: '#/patient-online/gp-connect',
+  SUCCESS_REDIRECT_ROUTE: SuccessRoutes.V2_PROVISIONING,
   // This shouldn't need to change as it expires in 2030, it can be edited using https://jwt.io/
-  ID_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZjhhZjExZC04OTgwLTRhNWUtOGNjYy1iYTc1Yjc3NzEwYmUiLCJhY2NvdW50X2lkIjoiZGY4YWYxMWQtODk4MC00YTVlLThjY2MtYmE3NWI3NzcxMGJlIiwiY3VzdG9tOmFjY291bnRfaWQiOiJkZjhhZjExZC04OTgwLTRhNWUtOGNjYy1iYTc1Yjc3NzEwYmUiLCJpc3MiOiJodHRwczovL2F1dGguZGV2LnNpZ25pbi5uaHMudWsiLCJpYXQiOjE1ODM5MjA2MTksImV4cCI6MTg5MzQ1NjAwMCwiYXVkIjoiaHR0cHM6Ly9hdXRoLmRldi5zaWduaW4ubmhzLnVrIiwianRpIjoiMDM0ZjQ1M2ItOTZhOS00OThiLWI2ZTEtYzA4MGVkMGI4ZmRhIiwiYXV0aGVudGljYXRpb25fdmVjdG9yIjoiQ3AuQ2QiLCJyZW1lbWJlcl9teV9kZXZpY2UiOmZhbHNlLCJ1c2VyX2FnZW50IjoiQW1hem9uIENsb3VkRnJvbnQifQ.H_mqSUYEKHcGk62HgJ2mDKls9s9CKXUnAHrw9jlb4_U',
+  ID_TOKEN,
   // Contents of nhs-authorization-cookie to be set, edit above
   NHS_COOKIE: JSON.stringify(OIDC_PARAMS),
 };
