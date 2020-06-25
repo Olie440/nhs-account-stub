@@ -78,6 +78,6 @@ module.exports = {
   SuccessRoutes: {
     V1_PYI: '#/patient-online/gp-connect',
     V2_PROVISIONING: '/provisioning/1234',
-    V2_P5_UPLIFT: '/proofing/what-you-need'
+    V2_P5_UPLIFT: '/proofing/know-nhs-number'
   }
 };
