@@ -1,7 +1,7 @@
 const {
   ID_TOKEN,
   LoginFlowTypes,
-  PYIFlowTypes,
+  PyiFlowTypes,
   ValidationResults,
   PreFlightResults,
   PreFlightEnabledStatuses,
@@ -33,7 +33,7 @@ module.exports = {
   // Global OTP check response
   OTP_RESPONSE: OTPResponses.SUCCESS,
   // PYI Flow to use
-  PYI_FLOW_TYPE: PYIFlowTypes.AUTO,
+  PYI_FLOW_TYPE: PyiFlowTypes.AUTO,
   // Photo validation result to use
   PYI_VALIDATION_RESULT: ValidationResults.SUCCESS,
   // Preflight checks enabled

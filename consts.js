@@ -8,9 +8,9 @@ module.exports = {
     VALID_LOGIN: Symbol()
   },
 
-  PYIFlowTypes: {
-    AUTO: 'Auto1',
-    MANUAL: 'Manual',
+  PyiFlowTypes: {
+    AUTO: Symbol(),
+    MANUAL: Symbol(),
   },
 
   ValidationResults: {
