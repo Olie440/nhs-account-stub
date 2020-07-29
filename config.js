@@ -2,13 +2,14 @@ const {
   ID_TOKEN,
   LoginFlowTypes,
   PyiFlowTypes,
+  AccountRecoveryFlows,
   ValidationResults,
   PreFlightResults,
   PreFlightEnabledStatuses,
   SubmissionResults,
   P5UpliftResponses,
   OTPResponses,
-  SuccessRoutes
+  SuccessRoutes,
 } = require('./consts.js');
 
 const OIDC_PARAMS = {
@@ -32,6 +33,8 @@ module.exports = {
   LOGIN_FLOW: LoginFlowTypes.REGISTER,
   // Global OTP check response
   OTP_RESPONSE: OTPResponses.SUCCESS,
+  // Account Recovery Flow
+  ACCOUNT_RECOVERY_FLOW: AccountRecoveryFlows.P0_MATCH,
   // PYI Flow to use
   PYI_FLOW_TYPE: PyiFlowTypes.AUTO,
   // Photo validation result to use

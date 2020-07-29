@@ -13,6 +13,14 @@ module.exports = {
     MANUAL: Symbol(),
   },
 
+  AccountRecoveryFlows: {
+    PHONE_NUMBER_NO_MATCH: Symbol(),
+    NHS_NUMBER_NO_MATCH: Symbol(),
+    CHANGE_PHONE_NUMBER_ERROR: Symbol(),
+    P0_MATCH: Symbol(),
+    P5_MATCH: Symbol()
+  },
+
   ValidationResults: {
     SUCCESS: {
       validationStatus: 'success',
@@ -79,5 +87,5 @@ module.exports = {
     V1_PYI: '#/patient-online/gp-connect',
     V2_PROVISIONING: '/provisioning/1234',
     V2_P5_UPLIFT: '/proofing/know-nhs-number'
-  }
+  },
 };
