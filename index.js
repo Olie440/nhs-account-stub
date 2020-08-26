@@ -7,6 +7,7 @@ const config = require('./config');
 const addLoginRoutes = require('./lib/login');
 const addPyiRoutes = require('./lib/pyi');
 const addAccountRoutes = require('./lib/account');
+const addContactDetailsRoutes = require('./lib/contact-details');
 
 const { ID_TOKEN, NHS_COOKIE, FRONT_END_URL } = require('./config');
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 addLoginRoutes(app);
 addPyiRoutes(app);
 addAccountRoutes(app);
+addContactDetailsRoutes(app);
 
 app.get('/', (_, res) => {
     res.cookie('id_token', ID_TOKEN);

@@ -13,6 +13,15 @@ module.exports = {
     MANUAL: Symbol(),
   },
 
+  ContactDetailsFlowTypes: {
+    NO_DETAILS: Symbol(),
+    NO_PHONE: Symbol(),
+    NO_EMAIL: Symbol(),
+    BOTH_MISMATCHED: Symbol(),
+    PHONE_MISMATCH: Symbol(),
+    EMAIL_MISMATCH: Symbol(),
+  },
+
   AccountRecoveryFlows: {
     PHONE_NUMBER_NO_MATCH: Symbol(),
     NHS_NUMBER_NO_MATCH: Symbol(),
@@ -87,5 +96,5 @@ module.exports = {
     V1_PYI: '#/patient-online/gp-connect',
     V2_PROVISIONING: '/provisioning/1234',
     V2_P5_UPLIFT: '/proofing/know-nhs-number'
-  },
+  }
 };
