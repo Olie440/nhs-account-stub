@@ -29,7 +29,7 @@ module.exports = {
   // Port to run the stub on
   PORT: 4000,
   // Address of the local front-end
-  FRONT_END_URL: 'http://localhost:4200/contact-details',
+  FRONT_END_URL: 'http://localhost:4200#/prove-your-identity',
   // Login Flow
   LOGIN_FLOW: LoginFlowTypes.VALID_LOGIN,
   // Contact Details Flow
@@ -45,7 +45,7 @@ module.exports = {
   // Preflight checks enabled
   PYI_PREFLIGHT_CHECK_ENABLED: PreFlightEnabledStatuses.ON,
   // Preflight flow to use
-  PYI_PREFLIGHT_CHECK_RESULT: PreFlightResults.BLURRED,
+  PYI_PREFLIGHT_CHECK_RESULT: PreFlightResults.SUCCESS,
   // Result of photo submission
   PYI_SUBMISSION_RESULT: SubmissionResults.GO_TO_AUTO,
   // P5 flow to use
