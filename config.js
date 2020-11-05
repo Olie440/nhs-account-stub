@@ -29,7 +29,7 @@ module.exports = {
   // Port to run the stub on
   PORT: 4000,
   // Address of the local front-end
-  FRONT_END_URL: 'http://localhost:4200#/prove-your-identity',
+  FRONT_END_URL: 'http://localhost:4200/#/patient-online/gp-connect',
   // Login Flow
   LOGIN_FLOW: LoginFlowTypes.VALID_LOGIN,
   // Contact Details Flow
@@ -39,7 +39,7 @@ module.exports = {
   // Account Recovery Flow
   ACCOUNT_RECOVERY_FLOW: AccountRecoveryFlows.P0_MATCH,
   // PYI Flow to use
-  PYI_FLOW_TYPE: PyiFlowTypes.AUTO,
+  PYI_FLOW_TYPE: PyiFlowTypes.MANUAL,
   // Photo validation result to use
   PYI_VALIDATION_RESULT: ValidationResults.SUCCESS,
   // Preflight checks enabled
