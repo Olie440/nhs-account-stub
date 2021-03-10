@@ -1,5 +1,6 @@
 const {
   ID_TOKEN,
+  ID_CHECKER_TOKEN,
   LoginFlowTypes,
   PyiFlowTypes,
   AccountRecoveryFlows,
@@ -11,6 +12,8 @@ const {
   OTPResponses,
   SuccessRoutes,
   ContactDetailsFlowTypes,
+  VideoVerificationFlowTypes,
+  StartRoutes,
 } = require('./consts.js');
 
 const OIDC_PARAMS = {
@@ -29,7 +32,7 @@ module.exports = {
   // Port to run the stub on
   PORT: 4000,
   // Address of the local front-end
-  FRONT_END_URL: 'http://localhost:4200/#/patient-online/gp-connect',
+  FRONT_END_URL: StartRoutes.ID_CHECKER_VIDEO_VERIFICATION,
   // Login Flow
   LOGIN_FLOW: LoginFlowTypes.VALID_LOGIN,
   // Contact Details Flow
@@ -39,7 +42,7 @@ module.exports = {
   // Account Recovery Flow
   ACCOUNT_RECOVERY_FLOW: AccountRecoveryFlows.P0_MATCH,
   // PYI Flow to use
-  PYI_FLOW_TYPE: PyiFlowTypes.MANUAL,
+  PYI_FLOW_TYPE: PyiFlowTypes.AUTO,
   // Photo validation result to use
   PYI_VALIDATION_RESULT: ValidationResults.SUCCESS,
   // Preflight checks enabled
@@ -50,10 +53,14 @@ module.exports = {
   PYI_SUBMISSION_RESULT: SubmissionResults.GO_TO_AUTO,
   // P5 flow to use
   P5_UPLIFT_RESPONSE: P5UpliftResponses.SUCCESS,
+  // Video Verification flow to use
+  VIDEO_VERIFICATION_FLOW: VideoVerificationFlowTypes.VAILD_RECORD,
   // Where to redirect to after login is successful
   SUCCESS_REDIRECT_ROUTE: SuccessRoutes.V1_PYI,
   // This shouldn't need to change as it expires in 2030, it can be edited using https://jwt.io/
   ID_TOKEN,
+  // This is the token needed to access to the id-checker app
+  ID_CHECKER_TOKEN,
   // Contents of nhs-authorization-cookie to be set, edit above
   NHS_COOKIE: JSON.stringify(OIDC_PARAMS),
 };

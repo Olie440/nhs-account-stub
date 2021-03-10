@@ -7,19 +7,16 @@ const env = 'dev19';
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4000',
-  accountApiUrl: 'http://localhost:4000',
-  authenticateApiUrl: 'http://localhost:4000',
-  accApiUrl: 'http://localhost:4000',
+  pyiApiUrl: 'http://localhost:4000',
+  authApiUrl: 'http://localhost:4000',
   idCheckerApiUrl: 'http://localhost:4000',
   deployDomain: `https://api.${env}.signin.nhs.uk`,
   healthServiceApiUrl: 'http://localhost:4000',
-  manageAccountApiUrl: 'http://localhost:4000',
   settingsUrl: `https://settings.${env}.signin.nhs.uk`,
   accessFrontEndUrl: `https://access.${env}.signin.nhs.uk`,
+  helpCentreUrl: `https://help.ext.signin.nhs.uk`,
   cookieDomain : 'localhost',
   hmr: true,
   iproovUrl: `https://nhs.rp.secure.iproov.me`,
-  applicationName: 'account',
-  helpCentreUrl: 'http://helpcente'
+  applicationName: 'account'
 };
